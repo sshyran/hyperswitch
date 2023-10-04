@@ -499,13 +499,13 @@ impl PaymentRedirectFlow for PaymentRedirectSync {
         merchant_account: domain::MerchantAccount,
         merchant_key_store: domain::MerchantKeyStore,
         req: PaymentsRedirectResponseData,
-        connector_action: CallConnectorAction,
+        _connector_action: CallConnectorAction,
     ) -> RouterResponse<api::PaymentsResponse> {
         let payment_sync_req = api::PaymentsRetrieveRequest {
             resource_id: req.resource_id,
             merchant_id: req.merchant_id,
             param: req.param,
-            force_sync: req.force_sync,
+            force_sync: true,
             connector: req.connector,
             merchant_connector_details: req.creds_identifier.map(|creds_id| {
                 api::MerchantConnectorDetailsWrap {
@@ -517,6 +517,11 @@ impl PaymentRedirectFlow for PaymentRedirectSync {
             expand_attempts: None,
             expand_captures: None,
         };
+
+        // Since there is no source verification logic added to verify the redirect response
+        // Overiding the call_connector_action to `Trigger` is a secure approach
+        // Once source verification is in place, if source is verified then the response can be consumed
+        // Untill then making this as `Trigger`, this will always update the status from connector
         payments_core::<api::PSync, api::PaymentsResponse, _, _, _>(
             state.clone(),
             merchant_account,
@@ -524,7 +529,7 @@ impl PaymentRedirectFlow for PaymentRedirectSync {
             PaymentStatus,
             payment_sync_req,
             services::api::AuthFlow::Merchant,
-            connector_action,
+            CallConnectorAction::Trigger,
             HeaderPayload::default(),
         )
         .await

@@ -10443,7 +10443,8 @@
       "PaymentMethodCreate": {
         "type": "object",
         "required": [
-          "payment_method"
+          "payment_method",
+          "customer_id"
         ],
         "properties": {
           "payment_method": {
@@ -10487,8 +10488,7 @@
           "customer_id": {
             "type": "string",
             "description": "The unique identifier of the customer.",
-            "example": "cus_meowerunwiuwiwqw",
-            "nullable": true
+            "example": "cus_meowerunwiuwiwqw"
           },
           "card_network": {
             "type": "string",
@@ -10772,6 +10772,7 @@
         "type": "object",
         "required": [
           "merchant_id",
+          "customer_id",
           "payment_method_id",
           "payment_method",
           "recurring_enabled",
@@ -10786,8 +10787,7 @@
           "customer_id": {
             "type": "string",
             "description": "The unique identifier of the customer.",
-            "example": "cus_meowerunwiuwiwqw",
-            "nullable": true
+            "example": "cus_meowerunwiuwiwqw"
           },
           "payment_method_id": {
             "type": "string",

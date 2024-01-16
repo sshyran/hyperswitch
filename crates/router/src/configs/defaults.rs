@@ -306,6 +306,15 @@ impl Default for super::settings::RequiredFields {
                                                     field_type: enums::FieldType::UserCardCvc,
                                                     value: None,
                                                 }
+                                            ),
+                                            (
+                                                "payout_method_data.card.holder_name".to_string(),
+                                                RequiredFieldInfo {
+                                                    required_field: "payout_method_data.card.card_holder_name".to_string(),
+                                                    display_name: "card_holder_name".to_string(),
+                                                    field_type: enums::FieldType::UserFullName,
+                                                    value: None,
+                                                }
                                             )
                                         ]
                                     ),

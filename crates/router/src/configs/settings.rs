@@ -525,6 +525,8 @@ pub struct Proxy {
     pub http_url: Option<String>,
     pub https_url: Option<String>,
     pub idle_pool_connection_timeout: Option<u64>,
+    pub http2_keep_alive_interval: Option<u64>,
+    pub http2_keep_alive_while_idle: Option<bool>,
 }
 
 #[derive(Debug, Deserialize, Clone)]

@@ -42,6 +42,8 @@ impl Default for super::settings::Proxy {
             http_url: Default::default(),
             https_url: Default::default(),
             idle_pool_connection_timeout: Some(90),
+            http2_keep_alive_interval: Some(30),
+            http2_keep_alive_while_idle: Some(false),
         }
     }
 }

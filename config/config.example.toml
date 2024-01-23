@@ -17,6 +17,8 @@ request_body_limit = 32_768
 # http_url = "http proxy url"   # Proxy all HTTP traffic via this proxy
 # https_url = "https proxy url" # Proxy all HTTPS traffic via this proxy
 idle_pool_connection_timeout = 90 # Timeout for idle pool connections (defaults to 90s)
+http2_keep_alive_interval = 30 # Sets an interval for HTTP2 Ping frames should be sent to keep a connection alive.
+http2_keep_alive_while_idle = false # Sets whether HTTP2 keep-alive should apply while the connection is idle.
 
 
 # Main SQL data store credentials

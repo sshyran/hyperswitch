@@ -27,6 +27,10 @@ fn get_client_builder(
 ) -> CustomResult<reqwest::ClientBuilder, ApiClientError> {
     let mut client_builder = reqwest::Client::builder()
         .redirect(reqwest::redirect::Policy::none())
+        .http2_keep_alive_interval(std::time::Duration::from_secs(
+            proxy_config.http2_keep_alive_interval.unwrap_or_default(),
+        ))
+        .http2_keep_alive_while_idle(proxy_config.http2_keep_alive_while_idle.unwrap_or_default())
         .pool_idle_timeout(std::time::Duration::from_secs(
             proxy_config
                 .idle_pool_connection_timeout

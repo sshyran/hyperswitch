@@ -527,6 +527,7 @@ pub struct Proxy {
     pub idle_pool_connection_timeout: Option<u64>,
     pub http2_keep_alive_interval: Option<u64>,
     pub http2_keep_alive_while_idle: Option<bool>,
+    pub http2_keep_alive_timeout: Option<u64>,
 }
 
 #[derive(Debug, Deserialize, Clone)]

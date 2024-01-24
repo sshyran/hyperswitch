@@ -44,6 +44,7 @@ impl Default for super::settings::Proxy {
             idle_pool_connection_timeout: Some(90),
             http2_keep_alive_interval: Some(30),
             http2_keep_alive_while_idle: Some(false),
+            http2_keep_alive_timeout: Some(60),
         }
     }
 }
